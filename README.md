@@ -25,3 +25,20 @@ https://github.com/Menersar/scratch-gui
 ```shell
 https://github.com/Menersar/scratch-vm
 ```
+
+## Create a project build
+
+1. Change into directory `scratch-desktop`.
+```shell
+cd scratch-desktop
+```
+
+2. Install dependencies.
+```shell
+yarn install
+```
+
+3.Create a project build.
+```shell
+yarn build
+```
