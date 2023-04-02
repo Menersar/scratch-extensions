@@ -70,23 +70,6 @@ const runBuilder = function (wrapperConfig, target) {
         }
     }
 
-
-    if (target.platform === 'linux') {
-
-        allArgs.push(`--c.mac.type=${wrapperConfig.mode === 'dist' ? 'distribution' : 'development'}`);
-        if (target.name === 'armhf:x64') {
-            allArgs.push(`--c.mac.provisioningProfile=${masDevProfile}`);
-        }
-        if (wrapperConfig.doSign) {
-            // really this is "notarize only if we also sign"
-            allArgs.push('--c.afterSign=scripts/afterSign.js');
-        } else {
-            allArgs.push('--c.mac.identity=null');
-        }
-
-    }
-
-
     if (!wrapperConfig.doPackage) {
         allArgs.push('--dir', '--c.compression=store');
     }
