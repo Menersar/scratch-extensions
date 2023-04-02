@@ -25,6 +25,7 @@
     "url": "git+ssh://git@github.com/Menersar/scratch-desktop.git"
   },
   "dependencies": {
+    "electron-installer-debian": "^3.1.0",
     "electron-packager": "^17.1.1",
     "scratch-gui": "../scratch-gui/",
     "scratch-vm": "../scratch-vm/",
