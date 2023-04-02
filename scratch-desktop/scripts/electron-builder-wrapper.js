@@ -69,6 +69,24 @@ const runBuilder = function (wrapperConfig, target) {
             allArgs.push('--c.mac.identity=null');
         }
     }
+
+
+    if (target.platform === 'linux') {
+
+        allArgs.push(`--c.mac.type=${wrapperConfig.mode === 'dist' ? 'distribution' : 'development'}`);
+        if (target.name === 'armhf:x64') {
+            allArgs.push(`--c.mac.provisioningProfile=${masDevProfile}`);
+        }
+        if (wrapperConfig.doSign) {
+            // really this is "notarize only if we also sign"
+            allArgs.push('--c.afterSign=scripts/afterSign.js');
+        } else {
+            allArgs.push('--c.mac.identity=null');
+        }
+
+    }
+
+
     if (!wrapperConfig.doPackage) {
         allArgs.push('--dir', '--c.compression=store');
     }
@@ -117,6 +135,10 @@ const calculateTargets = function (wrapperConfig) {
         windowsDirectDownload: {
             name: 'nsis:ia32',
             platform: 'win32'
+        },
+        linuxDirectDownload: {
+            name: 'armhf:x64',
+            platform: 'linux'
         }
     };
     const targets = [];
@@ -126,6 +148,14 @@ const calculateTargets = function (wrapperConfig) {
         targets.push(availableTargets.microsoftStore);
         targets.push(availableTargets.windowsDirectDownload);
         break;
+
+
+    case 'linux':
+            // Run in two passes so we can skip signing the AppX for distribution through the MS Store.
+            targets.push(availableTargets.linuxDirectDownload);
+            break;
+
+
     case 'darwin':
         // Running 'dmg' and 'mas' in the same pass causes electron-builder to skip signing the non-MAS app copy.
         // Running them as separate passes means they can both get signed.
