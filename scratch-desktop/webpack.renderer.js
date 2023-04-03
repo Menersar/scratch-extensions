@@ -12,7 +12,7 @@ module.exports = defaultConfig =>
         {
             name: 'renderer',
             useReact: true,
-            disableDefaultRulesForExtensions: ['js', 'jsx', 'css', 'svg', 'png', 'wav', 'gif', 'jpg', 'ttf'],
+            disableDefaultRulesForExtensions: ['js', 'jsx', 'css', 'svg', 'png', 'wav', 'gif', 'jpg', 'jpeg', 'ttf'],
             babelPaths: [
                 path.resolve(__dirname, 'src', 'renderer'),
                 /node_modules[\\/]+scratch-[^\\/]+[\\/]+src/,
