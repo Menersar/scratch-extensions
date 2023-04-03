@@ -1,5 +1,3 @@
-# scratch-extensions
-
 # Instructions 
 
 ## How I created this repository
@@ -26,16 +24,12 @@ https://github.com/Menersar/scratch-gui
 https://github.com/Menersar/scratch-vm
 ```
 
-## Create a project build
-
-
+## Run, build and package the app
 
 1. Change into directory `scratch-desktop`.
 ```shell
 cd scratch-desktop
 ```
-
-
 
 2. Install dependencies.
 ```shell
@@ -73,8 +67,6 @@ npx electron-forge import
 ```shell
 yarn run make
 ```
-
-
 
 # Sources
 
