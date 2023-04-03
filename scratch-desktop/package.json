@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "source-map-support": "^0.5.19",
-    "scratch-gui": "./scratch-gui/",
-    "scratch-vm": "./scratch-vm/"
+    "scratch-gui": "../scratch-gui/",
+    "scratch-vm": "../scratch-vm/"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
