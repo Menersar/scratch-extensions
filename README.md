@@ -28,20 +28,53 @@ https://github.com/Menersar/scratch-vm
 
 ## Create a project build
 
+
+
 1. Change into directory `scratch-desktop`.
 ```shell
 cd scratch-desktop
 ```
+
+
 
 2. Install dependencies.
 ```shell
 yarn install
 ```
 
-3.Create a project build.
+### Raspberry Pi OS
+
+Open rpi app in development mode.
 ```shell
-yarn build
+yarn start-rpi
 ```
+
+Build app for Debian.
+```shell
+yarn build-rpi
+```
+
+Turn Debian app build into installable package.
+```shell
+yarn dist-rpi
+```
+
+### Distribute app by using Electron Forge.
+1. Add Electron Forge as a development dependency.
+```shell
+yarn add --dev @electron-forge/cli
+```
+2. Use its import command to set up Forge's scaffolding.
+```shell
+npx electron-forge import
+```
+
+3. Create a distributable using Forge's make command.
+```shell
+yarn run make
+```
+
+
 
 # Sources
 
@@ -71,3 +104,6 @@ https://stackoverflow.com/questions/57518370/packaging-an-electron-app-for-raspb
 
 Debian package for your Electron app for Raspberry with a Debian OS:
 https://github.com/electron-userland/electron-installer-debian
+
+Electron's documentation:
+https://electronjs.org/docs
