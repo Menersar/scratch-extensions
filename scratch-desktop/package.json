@@ -5,17 +5,21 @@
   "author": "Scratch Foundation",
   "version": "3.29.1",
   "license": "BSD-3-Clause",
+  "main": "./src/main/index.js",
   "scripts": {
     "clean": "rimraf ./dist ./static/assets",
     "start": "mkdirp ./dist && electron-webpack dev --bail --display-error-details --env.minify=false --no-progress",
+    "start-rpi": "mkdirp ./dist && electron .",
     "compile": "mkdirp ./dist && electron-webpack --bail --display-error-details --env.minify=false --no-progress",
     "fetch": "rimraf ./static/assets/ && mkdirp ./static/assets/ && node ./scripts/fetchMediaLibraryAssets.js",
     "build": "npm run build:dev",
+    "build-rpi": "npm run compile && electron-packager . scratch-desktop --platform linux --arch x64 --out dist/",
     "build:dev": "npm run compile && npm run doBuild -- --mode=dev",
     "build:dir": "npm run compile && npm run doBuild -- --mode=dir",
     "build:dist": "npm run compile && npm run doBuild -- --mode=dist",
     "doBuild": "node ./scripts/electron-builder-wrapper.js",
     "dist": "npm run clean && npm run compile && npm run fetch && npm run doBuild -- --mode=dist",
+    "dist-rpi": "npm run clean && npm run compile && npm run fetch && electron-installer-debian --src dist/scratch-desktop-linux-x64/ --dest dist/installers/ --arch armhf",
     "distDev": "npm run clean && npm run compile && npm run fetch && npm run doBuild -- --mode=dev",
     "test": "npm run test:lint",
     "test:lint": "eslint --cache --color --ext .jsx,.js ."
@@ -25,11 +29,9 @@
     "url": "git+ssh://git@github.com/Menersar/scratch-desktop.git"
   },
   "dependencies": {
-    "electron-installer-debian": "^3.1.0",
-    "electron-packager": "^17.1.1",
-    "scratch-gui": "../scratch-gui/",
-    "scratch-vm": "../scratch-vm/",
-    "source-map-support": "^0.5.19"
+    "source-map-support": "^0.5.19",
+    "scratch-gui": "./scratch-gui/",
+    "scratch-vm": "./scratch-vm/"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
