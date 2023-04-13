@@ -398,12 +398,19 @@ Extension Blocks:
                     arguments: {
                         LED_NUMBER: {
                             type: ArgumentType.NUMBER,
-                            defaultValue: '1',
+                            defaultValue: '0',
                             menu: "led_numbers"
+                        },
+                        RED_GREEN: {
+                            type: ArgumentType.COLOR,
+                            defaultValue: 'red',
+                            menu: 'red_green'
                         }
+
                     }
                 },
 
+                /*
                 '---',
 
                 {
@@ -419,6 +426,7 @@ Extension Blocks:
                         },
                     }
                 },
+                */
             ],
 
 
@@ -436,6 +444,26 @@ Extension Block Menus:
 */
 
             menus: {
+
+                /*
+                // Required: an identifier for this menu, unique within this extension.
+            menuA: [
+                // Static menu: list items which should appear in the menu.
+                {
+                    // Required: the value of the menu item when it is chosen.
+                    value: 'itemId1',
+
+                    // Optional: the human-readable label for this item.
+                    // Use `value` as the text if this is absent.
+                    text: 'Item One'
+                },
+
+                // The simplest form of a list item is a string which will be used as
+                // both value and text.
+                'itemId2'
+            ],
+            */
+
 
                 digital_pins: {
                     acceptReporters: true,
@@ -456,7 +484,44 @@ Extension Block Menus:
                 //////////////////////////////////////////////////////////////////////////////////////////
                 led_numbers: {
                     acceptReporters: true,
-                    items: ['1', '2', '3', '4', '5','6', '7', '8', '9']
+                    items: [
+                        {
+                            value: '0',
+                            text: '1'
+                        },
+                        {
+                            value: '1',
+                            text: '2'
+                        },
+                        {
+                            value: '2',
+                            text: '3'
+                        },
+                        {
+                            value: '3',
+                            text: '4'
+                        },
+                        {
+                            value: '4',
+                            text: '5'
+                        },
+                        {
+                            value: '5',
+                            text: '6'
+                        },
+                        {
+                            value: '6',
+                            text: '7'
+                        },
+                        {
+                            value: '7',
+                            text: '8'
+                        },
+                        {
+                            value: '8',
+                            text: '9'
+                        },                   
+                    ]
                 },
 
                 red_green: {
